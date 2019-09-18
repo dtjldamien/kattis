@@ -29,13 +29,13 @@ public class JoinStrings {
             finalIdx = aIdx;
             aNode = listNodes.get(aIdx);
             bNode = listNodes.get(bIdx);
-            aNode.tail.setNext(bNode);
+            aNode.tail.next = bNode;
             aNode.tail = bNode.tail;
         }
         ListNode currNode = listNodes.get(finalIdx);
         while (currNode != null) {
             pw.print(strings[currNode.item]);
-            currNode = currNode.getNext();
+            currNode = currNode.next;
         }
         pw.close();
         br.close();
@@ -43,34 +43,13 @@ public class JoinStrings {
 }
 
 class ListNode {
-    /* attributes */
     public int item;
     public ListNode next;
     public ListNode tail;
 
-    /* constructors */
-    public ListNode(int val) {
-        this(val, null);
-    }
-
-    public ListNode(int val, ListNode n) { 
+    public ListNode(int val) { 
         item = val; 
-        next = n; 
+        next = null; 
         tail = this;
-    }
-
-    /* get the next ListNode */
-    public ListNode getNext() { return next; }
-
-    /* get the item of the ListNode */
-    public int getItem() { return item; }
-
-  /* set the item of the ListNode */
-  public void setItem(int val) { item = val; }
-
-    /* set the next reference */
-    public void setNext(ListNode n) {
-        next = n;
-        tail = n;
     }
 }
