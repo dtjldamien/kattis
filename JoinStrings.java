@@ -45,6 +45,7 @@ public class JoinStrings {
 class ListNode {
     public int item;
     public ListNode next;
+    public ListNode head;
     public ListNode tail;
 
     public ListNode(int val) { 

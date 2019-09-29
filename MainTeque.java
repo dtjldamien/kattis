@@ -108,7 +108,7 @@ class Teque {
             }
         }
         totalSize++;
-        balanceArrays();
+        // no need to balance since the arrays would be balanced
     }
 
     public void balanceArrays() {
