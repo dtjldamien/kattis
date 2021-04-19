@@ -29,7 +29,7 @@ int main() {
   itr = unique(feasible_widths.begin(), feasible_widths.end());
   feasible_widths.resize(distance(feasible_widths.begin(), itr));
   for (auto feasible_width : feasible_widths) {
-      cout << feasible_width << " ";
+    cout << feasible_width << " ";
   }
   cout << endl;
 }

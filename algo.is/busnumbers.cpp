@@ -34,7 +34,7 @@ int main() {
       } else if (consecutive_counter > 2) {
         cout << '-' << consecutive_end << ' ';
       } else if (consecutive_counter == 1) {
-          cout << ' ';
+        cout << ' ';
       }
       consecutive_counter = 0;
     }
