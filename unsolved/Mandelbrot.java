@@ -21,10 +21,10 @@ public class Mandelbrot {
         ComplexNumber z;
         ComplexNumber c;
         while (io.hasMoreTokens()) {
-            x = io.getDouble();
-            y = io.getDouble();
-            r = io.getInt();
-            z = new ComplexNumber(0, 0);
+            x = io.getDouble(); // real
+            y = io.getDouble(); // imaginary
+            r = io.getInt(); // maximum number of iterations to compute
+            z = new ComplexNumber(0, 0); // begin with z0 = 0
             c = new ComplexNumber(x, y);
             hasDiverged = false;
             for (int i = 0; i <= r; i++) {
