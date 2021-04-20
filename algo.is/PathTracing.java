@@ -1,5 +1,5 @@
 
-// https://open.kattis.com/problems/mandelbrot
+// https://open.kattis.com/problems/pathtracing
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
 import java.io.BufferedOutputStream;
@@ -9,66 +9,72 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Mandelbrot {
+public class PathTracing {
     public static void main(String[] args) throws Exception {
         Kattio io = new Kattio(System.in, System.out);
+        String move;
+        int currRow = 500;
+        int currCol = 500;
+        int minRow = 500;
+        int minCol = 500;
+        int maxRow = 500;
+        int maxCol = 500;
+        char[][] map = new char[1001][1001];
 
-        int case_num = 1;
-        double x;
-        double y;
-        int r;
-        boolean hasDiverged = false;
-        ComplexNumber z;
-        ComplexNumber c;
+        // billy starts off at the centre of the map
+        map[currRow][currCol] = 'S';
         while (io.hasMoreTokens()) {
-            x = io.getDouble();
-            y = io.getDouble();
-            r = io.getInt();
-            z = new ComplexNumber(0, 0);
-            c = new ComplexNumber(x, y);
-            hasDiverged = false;
-            for (int i = 0; i <= r; i++) {
-                if (z.mod() > 2) {
-                    hasDiverged = true;
-                    break;
+            move = io.getWord();
+
+            // update Billy's position
+            if (move.equals("up")) {
+                currRow--;
+            } else if (move.equals("down")) {
+                currRow++;
+            } else if (move.equals("left")) {
+                currCol--;
+            } else if (move.equals("right")) {
+                currCol++;
+            }
+
+            // update boundaries
+            if (currRow > maxRow) {
+                maxRow = currRow;
+            } else if (currRow < minRow) {
+                minRow = currRow;
+            }
+
+            if (currCol > maxCol) {
+                maxCol = currCol;
+            } else if (currCol < minCol) {
+                minCol = currCol;
+            }
+
+            if (map[currRow][currCol] != 'S') {
+                map[currRow][currCol] = '*';
+            }
+        }
+
+        // mark end location
+        map[currRow][currCol] = 'E';
+
+        for (int i = minRow - 1; i <= maxRow + 1; i++) {
+            for (int j = minCol - 1; j <= maxCol + 1; j++) {
+                if (i == minRow - 1 || i == maxRow + 1 || j == minCol - 1 || j == maxCol + 1) {
+                    io.print('#');
                 } else {
-                    z.square();
-                    z.add(c);
+                    // within boundaries
+                    // null in character array has the same value as '0'
+                    if (map[i][j] == 0) {
+                        io.print(' ');
+                    } else {
+                        io.print(map[i][j]);
+                    }
                 }
             }
-            if (hasDiverged) {
-                io.printf("Case %d: OUT\n", case_num);
-            } else {
-                io.printf("Case %d: IN\n", case_num);
-            }
-            case_num++;
+            io.println();
         }
         io.close();
-    }
-}
-
-class ComplexNumber {
-    public double real;
-    public double imaginary;
-
-    public ComplexNumber(double real, double imaginary) {
-        this.real = real;
-        this.imaginary = imaginary;
-    }
-
-    public void square() {
-        this.real = this.real * this.real - this.imaginary * this.imaginary;
-        this.imaginary = 2 * this.real * this.imaginary;
-    }
-
-    public double mod() {
-        // Math.hypot returns sqrt(x^2  + y^2)
-        return Math.hypot(this.real, this.imaginary);
-    }
-
-    public void add(ComplexNumber other) {
-        this.real = this.real + other.real;
-        this.imaginary = this.imaginary + other.imaginary;
     }
 }
 
