@@ -57,8 +57,9 @@ class ComplexNumber {
     }
 
     public void square() {
-        this.real = this.real * this.real - this.imaginary * this.imaginary;
-        this.imaginary = 2 * this.real * this.imaginary;
+        double tempReal = this.real;
+        this.real = tempReal * tempReal - this.imaginary * this.imaginary;
+        this.imaginary = 2 * tempReal * this.imaginary;
     }
 
     public double mod() {
