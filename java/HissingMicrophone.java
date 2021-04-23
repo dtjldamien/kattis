@@ -9,5 +9,6 @@ public class HissingMicrophone {
         } else {
             System.out.println("no hiss");
         }
+        sc.close();
     }
 }

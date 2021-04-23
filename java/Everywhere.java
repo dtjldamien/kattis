@@ -19,5 +19,6 @@ public class Everywhere {
             }
             System.out.println(cities.size());
         }
+        sc.close();
     }
 }

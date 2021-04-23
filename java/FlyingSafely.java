@@ -17,8 +17,10 @@ public class FlyingSafely {
             int n = io.getInt(); // number of cities
             int m = io.getInt(); // number of pilots
             for (int j = 0; j < m; j++) {
-                int a = io.getInt(); // city a
-                int b = io.getInt(); // city b
+                // int a = io.getInt(); // city a
+                // int b = io.getInt(); // city b
+                io.getInt();
+                io.getInt();
             }
             io.println(n - 1);
         }

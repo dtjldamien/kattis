@@ -14,5 +14,6 @@ public class Spavanac {
             hour = 23;
         }
         System.out.printf("%d %d",  hour, minutes);
+        sc.close();
     }
 }

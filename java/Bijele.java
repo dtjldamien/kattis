@@ -18,5 +18,6 @@ public class Bijele {
         sb.append(2 - numKnights + " ");
         sb.append(8 - numPawns + " ");
         System.out.println(sb);
+        sc.close();
     }
 }

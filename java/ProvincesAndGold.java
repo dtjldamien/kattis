@@ -23,5 +23,6 @@ public class ProvincesAndGold {
             output.append("Copper");
         }
         System.out.println(output);
+        sc.close();
     }
 }

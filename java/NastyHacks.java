@@ -17,5 +17,6 @@ public class NastyHacks {
                 System.out.println("do not advertise");
             }
         }
+        sc.close();
     }
 }

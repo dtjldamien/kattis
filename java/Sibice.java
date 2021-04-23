@@ -22,5 +22,6 @@ public class Sibice {
         for (String output : outputList) {
             System.out.println(output);
         }
+        sc.close();
     }
 }

@@ -8,5 +8,6 @@ public class Ladder {
         double theta = Math.toRadians(v);
         int length = (int) Math.ceil(h / Math.sin(theta));
         System.out.println(length);
+        sc.close();
     }
 }

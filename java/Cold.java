@@ -11,5 +11,6 @@ public class Cold {
             }
         }
         System.out.println(numColdDays);
+        sc.close();
     }
 }

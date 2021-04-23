@@ -16,5 +16,6 @@ public class SpeedLimit {
             System.out.printf("%d miles\n", dist);
             n = sc.nextInt();
         }
+        sc.close();
     }
 }

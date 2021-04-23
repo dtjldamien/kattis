@@ -8,6 +8,7 @@ public class Oddities {
             int x = sc.nextInt();
             checkOddOrEven(x);
         }
+        sc.close();
     }
 
     public static void checkOddOrEven(int x) {

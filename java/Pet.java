@@ -23,5 +23,6 @@ public class Pet {
             }
         }
         System.out.printf("%d %d", winningContestant, points[winningContestant - 1]);
+        sc.close();
     }
 }

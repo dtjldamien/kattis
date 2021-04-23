@@ -11,5 +11,6 @@ public class Qaly {
             qaly += q * y;
         }
         System.out.printf("%.3f", qaly);
+        sc.close();
     }
 }

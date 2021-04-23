@@ -16,6 +16,7 @@ public class Trik {
         } else {
             System.out.println(3);
         }
+        sc.close();
     }
 
     public static void swap(int[] cups, char command) {

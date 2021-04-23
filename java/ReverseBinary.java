@@ -11,5 +11,6 @@ public class ReverseBinary {
         }
         // parseInt(String s, int radix) radix -> converts from base (radix) to decimal
         System.out.println(Integer.parseInt(sb.toString(), 2));
+        sc.close();
     }
 }
