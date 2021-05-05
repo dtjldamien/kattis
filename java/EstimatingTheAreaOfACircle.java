@@ -40,7 +40,6 @@ class Kattio extends PrintWriter {
         super(new BufferedOutputStream(System.out));
         r = new BufferedReader(new InputStreamReader(i));
     }
-
     public Kattio(InputStream i, OutputStream o) {
         super(new BufferedOutputStream(o));
         r = new BufferedReader(new InputStreamReader(i));
@@ -76,13 +75,11 @@ class Kattio extends PrintWriter {
             try {
                 while (st == null || !st.hasMoreTokens()) {
                     line = r.readLine();
-                    if (line == null)
-                        return null;
+                    if (line == null) return null;
                     st = new StringTokenizer(line);
                 }
                 token = st.nextToken();
-            } catch (IOException e) {
-            }
+            } catch (IOException e) { }
         return token;
     }
 

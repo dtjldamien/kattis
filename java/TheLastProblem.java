@@ -1,5 +1,3 @@
-package java;
-
 // https://open.kattis.com/problems/thelastproblem
 import java.io.BufferedReader;
 import java.io.IOException;
