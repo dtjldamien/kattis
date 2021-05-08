@@ -1,3 +1,4 @@
+// https://open.kattis.com/problems/nodup
 #include <iostream>
 #include <unordered_set>
 
@@ -7,9 +8,11 @@ int main() {
   string word;
   unordered_set<string> set;
   while (cin >> word) {
-    if (set.find(word) != set.end()) {
+    if (set.count(word)) {
       cout << "no" << endl;
       return 0;
+    } else {
+      set.insert(word);
     }
   }
   cout << "yes" << endl;
