@@ -32,7 +32,8 @@ public class Ladice {
 class UnionFind {
     public int[] p; // predecessor array
     public int[] rank;
-    public int[] size; // array of storage size of the sets, start from 1 since all drawers can store one item
+    public int[] size; // array of storage size of the sets, start from 1 since all drawers can store
+                       // one item
     public int[] numItems; // array of no of items in the sets
 
     public UnionFind(int N) {
@@ -43,7 +44,6 @@ class UnionFind {
         for (int i = 0; i < N; i++) {
             p[i] = i;
             size[i] = 1;
-
         }
     }
 
