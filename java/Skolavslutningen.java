@@ -15,8 +15,6 @@ public class Skolavslutningen {
             int m = Integer.parseInt(firstLine[1]);
             int k = Integer.parseInt(firstLine[2]);
             UnionFind ufds = new UnionFind(k);
-            int numColor = k;
-
             // populate lineup first
             int[][] lineup = new int[n][m];
             String input;
@@ -26,19 +24,18 @@ public class Skolavslutningen {
                     lineup[i][j] = input.charAt(j) - 'A';
                 }
             }
-
             // students in the same column have the same color of hat
+            int firstRow;
             for (int col = 0; col < m; col++) {
-                int firstRow = lineup[0][col];
+                firstRow = lineup[0][col];
                 for (int row = 1; row < n; row++) {
                     if (!ufds.isSameSet(firstRow, lineup[row][col])) {
                         ufds.unionSet(firstRow, lineup[row][col]);
-                        numColor--;
+                        k--;
                     }
                 }
             }
-
-            pw.println(numColor);
+            pw.println(k);
             pw.close();
             br.close();
         } catch (IOException e) {
@@ -50,7 +47,8 @@ public class Skolavslutningen {
 class UnionFind {
     public int[] p; // predecessor array
     public int[] rank;
-    public int[] size; // array of storage size of the sets, start from 1 since all drawers can store one item
+    public int[] size; // array of storage size of the sets, start from 1 since all drawers can store
+                       // one item
     public int[] numItems; // array of no of items in the sets
 
     public UnionFind(int N) {
@@ -78,22 +76,20 @@ class UnionFind {
     }
 
     public void unionSet(int i, int j) {
-        if (!isSameSet(i, j)) {
-            int x = findSet(i), y = findSet(j); // x predecessor of i, y predecessor of j
-            // rank is used to keep the tree short
-            if (rank[x] > rank[y]) {
-                p[y] = x;
-                size[x] += size[y];
-                numItems[x] += numItems[y];
-            } else {
-                p[x] = y;
-                if (rank[x] == rank[y]) {
-                    rank[y] = rank[y] + 1;
-                }
-                size[y] += size[x];
-                numItems[y] += numItems[x];
+        // check if same set first before union
+        int x = findSet(i), y = findSet(j); // x predecessor of i, y predecessor of j
+        // rank is used to keep the tree short
+        if (rank[x] > rank[y]) {
+            p[y] = x;
+            size[x] += size[y];
+            numItems[x] += numItems[y];
+        } else {
+            p[x] = y;
+            if (rank[x] == rank[y]) {
+                rank[y] = rank[y] + 1;
             }
+            size[y] += size[x];
+            numItems[y] += numItems[x];
         }
     }
 }
-
