@@ -15,18 +15,30 @@ public class Skolavslutningen {
             int m = Integer.parseInt(firstLine[1]);
             int k = Integer.parseInt(firstLine[2]);
             UnionFind ufds = new UnionFind(k);
+            int numColor = k;
+
+            // populate lineup first
+            int[][] lineup = new int[n][m];
             String input;
             for (int i = 0; i < n; i++) {
                 input = br.readLine();
-                int firstSet = ufds.findSet(input.charAt(0) - 'A');
-                for (int j = 1; j < m; j++) {
-                    if (!ufds.isSameSet(firstSet, ufds.findSet(input.charAt(j) - 'A'))) {
-                        ufds.unionSet(firstSet, input.charAt(j) - 'A');
-                        k--;
+                for (int j = 0; j < m; j++) {
+                    lineup[i][j] = input.charAt(j) - 'A';
+                }
+            }
+
+            // students in the same column have the same color of hat
+            for (int col = 0; col < m; col++) {
+                int firstRow = lineup[0][col];
+                for (int row = 1; row < n; row++) {
+                    if (!ufds.isSameSet(firstRow, lineup[row][col])) {
+                        ufds.unionSet(firstRow, lineup[row][col]);
+                        numColor--;
                     }
                 }
             }
-            pw.println(k);
+
+            pw.println(numColor);
             pw.close();
             br.close();
         } catch (IOException e) {
