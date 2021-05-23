@@ -1,10 +1,10 @@
+package java;
 // https://open.kattis.com/problems/rationalsequence2
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Pair;
-import java.util.List;
 import java.util.Queue;
+import java.util.PriorityQueue;
 
 public class RationalSequence2 {
     public static void main(String[] args) throws Exception {
@@ -15,20 +15,26 @@ public class RationalSequence2 {
             String[] input = br.readLine().split(" ");
             int K = Integer.parseInt(input[0]);
             String[] F = input[1].split("/");
-            Pair pair = new Pair(Integer.parseInt(n[0]), Integer.parseInt(n[1]));
+            Pair pair = new Pair(Integer.parseInt(F[0]), Integer.parseInt(F[1]));
             Queue<Pair> pq = new PriorityQueue<>();
-            pq.add(pair);
-            while (!pq.isEmpty()) {
-                Pair e = pq.poll();
-                if (e.p == 1 || e.q == 1) {
-
+            while (pair.p != 1 || pair.q != 1) {
+                pq.add(pair);
+                if (pair.p > pair.q) {
+                    pair = new Pair (pair.p - pair.q, pair.q);
+                } else  {
+                    pair = new Pair (pair.p, pair.q - pair.p);
                 }
             }
-            int n = 0;
-            pw.printf("%d %d", K, n);
+            int n = 1;
+            while (!pq.isEmpty()) {
+                pair = pq.poll();
+                n *= 2; // traverse up one level from the left child
+                if (pair.p > pair.q) {
+                    n++; // up one level from the right child
+                }
+            }
+            pw.printf("%d %d\n", K, n);
         }
-        double a = Double.parseDouble(br.readLine());
-        pw.println(4 * Math.sqrt(a));
         pw.close();
         br.close();
     }
