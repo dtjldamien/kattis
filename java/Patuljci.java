@@ -1,3 +1,4 @@
+package java;
 
 // https://open.kattis.com/problems/drunkvigenere
 import java.io.BufferedReader;
