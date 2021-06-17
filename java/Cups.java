@@ -35,7 +35,6 @@ public class Cups {
 }
 
 class Cup implements Comparable<Cup> {
-
     String color;
     int diameter;
 
