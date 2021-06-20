@@ -1,3 +1,4 @@
+package java;
 // https://open.kattis.com/problems/luhnchecksum
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
