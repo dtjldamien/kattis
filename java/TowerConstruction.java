@@ -1,3 +1,4 @@
+package java;
 
 // https://open.kattis.com/problems/tornbygge
 import java.io.BufferedReader;
