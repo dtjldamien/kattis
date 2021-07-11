@@ -42,7 +42,7 @@ public class T9Spelling {
             String input = br.readLine();
             sb.append(dict[input.charAt(0)]);
             for (int j = 1; j < input.length(); j++) {
-                if (dict[input.charAt(j)].charAt(1) == dict[input.charAt(j-1)].charAt(0)) {
+                if (dict[input.charAt(j)].charAt(0) == dict[input.charAt(j-1)].charAt(0)) {
                     sb.append(" ");
                 }
                 sb.append(dict[input.charAt(j)]);
