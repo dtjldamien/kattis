@@ -1,3 +1,4 @@
+package java;
 // https://open.kattis.com/problems/keytocrypto
 import java.io.BufferedReader;
 import java.io.IOException;
