@@ -1,4 +1,3 @@
-
 // https://open.kattis.com/problems/secretmessage
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
