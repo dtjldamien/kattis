@@ -1,3 +1,4 @@
+
 // https://open.kattis.com/problems/firefly
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
